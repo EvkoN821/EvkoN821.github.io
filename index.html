@@ -1,28 +1,91 @@
 <!DOCTYPE html>
-
-<!-- комментарий в HTML -->
-
-<!-- в первой строке мы сообщаем браузеру,
-  что это документ HTML5 -->
-
 <html lang="ru">
-
   <head>
-    <title>Название страницы</title>
+    <title> Ex 1</title>
+    <style>
+      li p {margin: 0}
+    </style>
   </head>
 
   <body>
-
-    <ul>
-	  <li> <a href="http://example.com/"> абсолютную гиперссылку на главную страницу сайта example.com </a> </li>
-	  <li> <a href="https://example.com/"> абсолютную на главную сайта example.com в протоколе https </a> </li>
-	  <li> <a href="ftp://example.com/">  ссылку на файл на сервере FTP без авторизации </a> </li>
-	  <li> <a href="ftp://user:1111@example.com/Temp/file.txt"> 4 </a> </li>
-	  <li> <a href="https://example.com#about"> 5 </a> </li>
-	  <li> <a name="mark"></a> </li>
-	  <li><a href="#mark"> 6</a> </li>
-	</ul>
+  <a id=“list_of_links”></a> Список ссылок:
+    <ol>
+	  <li> <a href="http://example.com"> 1) Абсолютная гиперссылка на главную страницу сайта example.com</a> </li>
+	  <li> <a href="https://example.com"> 2) Абсолютная на главную сайта example.com в протоколе https</a> </li>
+	  <li> <a href="ftp://example.com/file.txt"> 3) Ссылка на файл на сервере FTP без авторизации</a> </li>
+	  <li> <a href="ftp://user:password@example.com/file.txt"> 4) Ссылка на файл на сервере FTP с авторизацией</a> </li>
+	  <li> <a href="https://example.com#about"> 5) Ссылка на фрагмент страницы некоторого сайта</a> </li>
+	  <li> <a href="index.html#list_of_links"> 6) Ссылка на фрагмент текущей страницы</a> </li>
+	  <li> <a href="https://example.com?parameter=value&color=red"> 7) Ссылка с двумя параметрами в URL</a> </li>
+	  <li> <a href="https://example.com/help" title="help"> 8) Список ссылок основной навигации сайта с подписями title</a> </li>
+	  <li> <a> 9) Cсылка без href</a> </li>
+	  <li> <a href=""> 10) Ссылка с пустым href</a> </li>
+	  <li> <a href="http://example.com" rel="nofollow"> 11) Cсылка, по которой запрещен переход поисковикам</a> </li>
+	  <li> <!--noindex--><a href="http://example.com" rel="nofollow"> 12) Запрещенная для индексации поисковиками</a><!--/noindex--> </li>
+	  <li> <p> 13) Студенты <a href="https://www.kubsu.ru/ru/fktipm"> ФКТиПМ </a> верят в лучшее </p>
+	  <li> <a href="http://example.com"><img src="r6.jpg" width="50" height="50" alt="14) Ссылка-изображение"></a> </li>
+	  <li>
+	    <p><img src="csgo.png" usemap="#map1" width="100" height="100" alt="15) Ссылка из прямоугольной области картинки"></p>
+          <p><map name="map1">
+	      <area shape="rect" alt="1" coords="10,10,90,90" href="http://example.com/1">
+	    </map></p>
+	  </li>
+	  <li>
+	    <p><img src="kubsu.jpg" usemap="#map2" width="100" height="100" alt="Ссылка из круглой области картинки">
+	      <p><map name="map2">
+	      <area shape="circle" alt="2" coords="50,50,30" href="http://example.com/2">
+	    </map></p>
+	  </li>
+	  <li> <a href="demo.html"> 16) Относительная на страницу в текущем каталоге</a></li>
+	  <li> <a href="about/form.html"> 17) Относительная на страницу в каталоге about</a></li>
+	  <li> <a href="../demo.html"> 18) Относительная на страницу в каталоге уровнем выше текущего</a></li>
+	  <li> <a href="../../demo.html"> 19) Относительная на страницу в каталоге двумя уровнями выше</a></li>
+	  <li> <a href="/"> 20) Сокращенная на главную</a></li>
+	  <li> <a href="#list_of_links"> 21) Cокращенная ссылка на внутреннюю</a></li>
+	</ol>
+	
+	<b>Форма</b>
+	<form action="/"
+      method="POST">
+      <label>
+        Введите имя:<br />
+        <input name="field1"
+          value="I" />
+      </label><br />
+      <label>
+        Введите свой email:<br />
+        <input name="field3"
+          value="I@moodle.kubsu.ru"
+          type="email" />
+      </label><br />
+      <label>
+        Текстовое поле даты:<br />
+        <input name="field3"
+          value="2021-09-11"
+          type="date" />
+      </label><br />
+      Пол:<br />
+      <label><input type="radio" checked="checked" name="radio1" value="val1" />мужской</label>
+      <label><input type="radio" name="radio1" value="val2" />женский</label><br />
+	  Количество конечностей:<br />
+      <label><input type="radio" name="radio2" value="val1" />2 ноги, 2 руки</label>
+	  <label><input type="radio" name="radio2" value="val2" />1 нога, 1 рука</label>
+	  <label><input type="radio" name="radio2" value="val2" />0 ног, 92 руки</label>
+      <label><input type="radio" checked="checked" name="radio2" value="val3" />4 руки, 3 ноги</label><br />	
+	  Сверхспособности:<br />
+        <label><select name="field4"
+          multiple="multiple">
+          <option value="val1">Бессмертие</option>
+          <option value="val2">Прохождение скозь стены</option>
+          <option value="val3" selected="selected">Левитация</option>
+        </select>
+      </label><br />
+	  <label>
+        Биография:<br />
+        <textarea name="field5">...</textarea>
+      </label><br />
+      <label><input type="checkbox" name="check-1" /> с контрактом ознакомлен (а) </label>
+      <input type="submit" value="Отправить" />
+    </form>
   </body>
-
 </html>
- 
