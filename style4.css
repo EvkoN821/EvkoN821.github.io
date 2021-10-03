@@ -23,11 +23,11 @@ table {
   width: 100%;
 }
 
-#table_odd {
+table_odd {
     background-color:#B9FFD3;
 }
 
-#table_even {
+table_even {
     background-color:#FAFFAB;
 }
 
