@@ -23,11 +23,12 @@ table {
   width: 100%;
 }
 
-#noteven_1, #noteven_2, #noteven_3{
-    background: #00BCFF;
+.table_odd {
+    background-color:#B9FFD3;
 }
-#even_1,#even_2 {
-    background: #FEFFDB;
+
+.table_even {
+    background-color:#FAFFAB;
 }
 
 body footer{
