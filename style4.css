@@ -1,0 +1,35 @@
+#link_1, #link_2, #link_3{
+    background-color: #FFDE00;
+    font-family: cursive;
+}
+
+#bf_list, #content table, #superform{
+    background-color: #FEFFDB;
+    font-family: cursive;
+}
+
+header main, header aside{
+    background-color: #00BCFF;
+    font-family: cursive;
+    vertical-align: middle;
+    height: 100%;
+}
+
+table td, th{
+  border: 1px solid black;
+}
+
+table {
+  width: 100%;
+}
+
+#noteven_1, #noteven_2, #noteven_3{
+    background: #00BCFF;
+}
+#even_1,#even_2 {
+    background: #FEFFDB;
+}
+
+body footer{
+    background-color: #FFDE00;
+}
