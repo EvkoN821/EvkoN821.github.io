@@ -1,16 +1,16 @@
 #link_1, #link_2, #link_3{
     background-color: #FFDE00;
-    font-family: cursive;
+    font-family: fantasy;
 }
 
 #bf_list, #content table, #superform{
     background-color: #FEFFDB;
-    font-family: cursive;
+    font-family: fantasy;
 }
 
 header main, header aside{
     background-color: #00BCFF;
-    font-family: cursive;
+    font-family: fantasy;
     vertical-align: middle;
     height: 100%;
 }
