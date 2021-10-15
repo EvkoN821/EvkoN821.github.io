@@ -1,0 +1,7 @@
+#property, #options{
+    display: none;
+}
+
+#first, #second, #third{
+    background-color: green;
+}
