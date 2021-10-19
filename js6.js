@@ -3,24 +3,24 @@ function getPrice(amount, type) {
 	if (amount != 0) {
 		result.innerHTML = type * amount;
 	} else {
-		result.innerHTML = "Пожалуйста, введите корректные данные";
+		result.innerHTML = "введите корректные данные";
 	}
 }
 
 function getPriceOptions(amount, type, option) {
 	let result = document.getElementById("result");
 	if (amount == 0) {
-		result.innerHTML = "Пожалуйста, введите корректные данные";
+		result.innerHTML = "введите корректные данные";
 	} else {
 		switch (option) {
 			case "o1":
-				result.innerHTML = ((type + 1500) * amount);
+				result.innerHTML = ((type + 1000) * amount);
 				break;
 			case "o2":
-				result.innerHTML = ((type + 3000) * amount);
+				result.innerHTML = ((type + 2000) * amount);
 				break;
 			case "o3":
-				result.innerHTML = ((type + 5000) * amount);
+				result.innerHTML = ((type + 3000) * amount);
 				break;
 		}
 	}
@@ -30,11 +30,11 @@ window.addEventListener('DOMContentLoaded', function(event) {
 	console.log("DOM fully loaded and parsed");
     let radioListener = "";
 	let amount = 0;
-	let typeAll = [2500, 5000, 10000];
+	let typeAll = [99999, 1200, 8000];
 	let type = typeAll[0];
     let flag_1 = true, flag_2=true, flag_3=true;
 	let result = document.getElementById("result");
-	result.innerHTML = "Пожалуйста, введите данные";
+	result.innerHTML = "введите данные";
 
 	let re = /^\d+$/;
 
@@ -55,17 +55,17 @@ window.addEventListener('DOMContentLoaded', function(event) {
 		getPrice(amount, type);
 		}
 
-            let s = document.getElementsByName("list_of_goods");
+            let s = document.getElementsByName("goods");
 	        s[0].addEventListener("change", function(event) {
 		        let select = event.target;
 		        let radios = document.getElementById("options");
 		        let checkbox = document.getElementById("property");
-		    if (select.value == "cup") {
+		    if (select.value == "zayt") {
 			    radios.style.display = "none";
 			    checkbox.style.display = "none";
 			    type = typeAll[0];
 			    getPrice(amount, type);
-		    } else if (select.value == "pants") {
+		    } else if (select.value == "anas") {
 			    radios.style.display = "none";
 			    checkbox.style.display = "block";
 			    type = typeAll[1];
@@ -92,7 +92,7 @@ window.addEventListener('DOMContentLoaded', function(event) {
 	        c[0].addEventListener("change", function(event) {
 		        if (event.target.checked && amount != 0) {
 			        result.innerHTML = (type - 1000) * amount;
-                    			flag_2 = false;
+                    flag_2 = false;
 					flag_3 = false;
 		        } else {
 			        getPrice(amount, type);
@@ -102,9 +102,9 @@ window.addEventListener('DOMContentLoaded', function(event) {
 
 		} else {
 			amount = 0;
-			result.innerHTML = "Пожалуйста, введите корректные данные";
+			result.innerHTML = "введите корректные данные";
 		}
 		amountHTML.blur();
 	});
-	
-});
+
+}); 
