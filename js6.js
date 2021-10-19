@@ -1,117 +1,110 @@
-
-function getPriceO(number, type, option) {
-	let res = document.getElementById("result");
-	if (number != 0) {
-		switch (option) {
-			case "o1":
-				res.innerHTML = ((type + 1000) * number);
-				break;
-			case "o2":
-				res.innerHTML = ((type + 2000) * number);
-				break;
-			case "o3":
-				res.innerHTML = ((type + 3000) * number);
-				break;
-		}
-	} 
-	else {
-		res.innerHTML = "введите корректные данные";
+function getPrice(amount, type) {
+	let result = document.getElementById("result");
+	if (amount != 0) {
+		result.innerHTML = type * amount;
+	} else {
+		result.innerHTML = "Пожалуйста, введите корректные данные";
 	}
 }
-function getPrice(number, type) {
-	let res = document.getElementById("result");
-	if (number != 0) {
-		res.innerHTML = type * number;
-	} 
-	else {
-		res.innerHTML = "введите корректные данные";
+
+function getPriceOptions(amount, type, option) {
+	let result = document.getElementById("result");
+	if (amount == 0) {
+		result.innerHTML = "Пожалуйста, введите корректные данные";
+	} else {
+		switch (option) {
+			case "o1":
+				result.innerHTML = ((type + 1500) * amount);
+				break;
+			case "o2":
+				result.innerHTML = ((type + 3000) * amount);
+				break;
+			case "o3":
+				result.innerHTML = ((type + 5000) * amount);
+				break;
+		}
 	}
 }
 
 window.addEventListener('DOMContentLoaded', function(event) {
 	console.log("DOM fully loaded and parsed");
-	let typeAll = [99999, 1200, 8000];
+    let radioListener = "";
+	let amount = 0;
+	let typeAll = [2500, 5000, 10000];
 	let type = typeAll[0];
-	let number = 0;
-	let rl = "";
-    let f1 = true, f2=true, f3=true;
-	let res = document.getElementById("result");
-	res.innerHTML = "введите данные";
-	let re = /^\d+$/;
-	let numberHTML = document.getElementById("number");
-	numberHTML.addEventListener("change", function(event) {
-		if (re.test(event.target.value)) {
-		number = parseInt(event.target.value);
-        if(f1 && f2){
-		getPrice(number, type);
-            } 
-	    else if(!f1){
-                getPriceO(number, type, rl);
-                f1 = true;
-            } 
-	    else if(!f2 && !f3){
-                res.innerHTML = (type - 1000) * number;
-                f2 = true;
-		f3 = true;
-            } 
-	    else if(f3){
-		getPrice(number, type);
-	    }
+    let flag_1 = true, flag_2=true, flag_3=true;
+	let result = document.getElementById("result");
+	result.innerHTML = "Пожалуйста, введите данные";
 
-            let a = document.getElementsByName("goods");
-	        a[0].addEventListener("change", function(event) {
+	let re = /^\d+$/;
+
+	let amountHTML = document.getElementById("amount");
+	amountHTML.addEventListener("change", function(event) {
+		if (re.test(event.target.value)) {
+		amount = parseInt(event.target.value);
+            if(flag_1 && flag_2){
+		getPrice(amount, type);
+            } else if(!flag_1){
+                getPriceOptions(amount, type, radioListener);
+                flag_1 = true;
+            } else if(!flag_2 && !flag_3){
+                result.innerHTML = (type - 1000) * amount;
+                flag_2 = true;
+		flag_3 = true;
+            } else if(flag_3){
+		getPrice(amount, type);
+		}
+
+            let s = document.getElementsByName("list_of_goods");
+	        s[0].addEventListener("change", function(event) {
 		        let select = event.target;
 		        let radios = document.getElementById("options");
 		        let checkbox = document.getElementById("property");
-				if (select.value == "zayt") {
-					radios.style.display = "none";
-					checkbox.style.display = "none";
-					type = typeAll[0];
-					getPrice(number, type);
-				} 
-				else if (select.value == "anas") {
-					radios.style.display = "none";
-					checkbox.style.display = "block";
-					type = typeAll[1];
-					getPrice(number, type);
-				} 
-				else {
-					radios.style.display = "block";
-					checkbox.style.display = "none";
-					type = typeAll[2];
-					getPrice(number, type);
-				}
-		    a[0].blur();
-            }
-			);
+		    if (select.value == "cup") {
+			    radios.style.display = "none";
+			    checkbox.style.display = "none";
+			    type = typeAll[0];
+			    getPrice(amount, type);
+		    } else if (select.value == "pants") {
+			    radios.style.display = "none";
+			    checkbox.style.display = "block";
+			    type = typeAll[1];
+			    getPrice(amount, type);
+		    } else {
+			    radios.style.display = "block";
+			    checkbox.style.display = "none";
+			    type = typeAll[2];
+			    getPrice(amount, type);
+		    }
+		    s[0].blur();
+            });
 
             let radioHTML = document.querySelectorAll(".options input[type=radio]");
 	        radioHTML.forEach(function(radio) {
 		        radio.addEventListener("change", function(event) {
-			    rl = event.target.value;
-			    getPriceO(number, type, rl);
-                	    f1 = false;
+			    radioListener = event.target.value;
+			    getPriceOptions(amount, type, radioListener);
+                	    flag_1 = false;
 		        });
 	        });
 
             let c = document.getElementsByName("property");
 	        c[0].addEventListener("change", function(event) {
-		        if (event.target.checked && number != 0) {
-			        res.innerHTML = (type - 1000) * number;
-                                f2 = false;
-				f3 = false;
-		        } 
-			else {
-			        getPrice(number, type);
-				f3 = true;
+		        if (event.target.checked && amount != 0) {
+			        result.innerHTML = (type - 1000) * amount;
+                    			flag_2 = false;
+					flag_3 = false;
+		        } else {
+			        getPrice(amount, type);
+					flag_3 = true;
 		        }
 	        });
-		} 
-		else {
-			number = 0;
-			res.innerHTML = "введите корректные данные";
-		}
-		numberHTML.blur();
-	});
 
+		} else {
+			amount = 0;
+			result.innerHTML = "Пожалуйста, введите корректные данные";
+		}
+		amountHTML.blur();
+	});
+	
 });
