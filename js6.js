@@ -33,7 +33,7 @@ window.addEventListener('DOMContentLoaded', function(event) {
 	let typeAll = [99999, 1200, 8000];
 	let type = typeAll[0];
 	let number = 0;
-	let RL = "";
+	let rl = "";
     let f1 = true, f2=true, f3=true;
 	let res = document.getElementById("result");
 	res.innerHTML = "введите данные";
@@ -46,7 +46,7 @@ window.addEventListener('DOMContentLoaded', function(event) {
 		getPrice(number, type);
             } 
 	    else if(!f1){
-                getPriceO(number, type, RL);
+                getPriceO(number, type, rl);
                 f1 = true;
             } 
 	    else if(!f2 && !f3){
@@ -88,8 +88,8 @@ window.addEventListener('DOMContentLoaded', function(event) {
             let radioHTML = document.querySelectorAll(".options input[type=radio]");
 	        radioHTML.forEach(function(radio) {
 		        radio.addEventListener("change", function(event) {
-			    RL = event.target.value;
-			    getPriceO(number, type, RL);
+			    rl = event.target.value;
+			    getPriceO(number, type, rl);
                 	    f1 = false;
 		        });
 	        });
