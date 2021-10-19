@@ -2,7 +2,8 @@ function getPrice(amount, type) {
 	let result = document.getElementById("result");
 	if (amount != 0) {
 		result.innerHTML = type * amount;
-	} else {
+	} 
+	else {
 		result.innerHTML = "введите корректные данные";
 	}
 }
@@ -11,7 +12,8 @@ function getPriceOptions(amount, type, option) {
 	let result = document.getElementById("result");
 	if (amount == 0) {
 		result.innerHTML = "введите корректные данные";
-	} else {
+	} 
+	else {
 		switch (option) {
 			case "o1":
 				result.innerHTML = ((type + 1000) * amount);
@@ -28,11 +30,11 @@ function getPriceOptions(amount, type, option) {
 
 window.addEventListener('DOMContentLoaded', function(event) {
 	console.log("DOM fully loaded and parsed");
-    let radioListener = "";
+        let radioListener = "";
 	let amount = 0;
 	let typeAll = [99999, 1200, 8000];
 	let type = typeAll[0];
-    let flag_1 = true, flag_2=true, flag_3=true;
+        let flag_1 = true, flag_2=true, flag_3=true;
 	let result = document.getElementById("result");
 	result.innerHTML = "введите данные";
 
@@ -44,16 +46,19 @@ window.addEventListener('DOMContentLoaded', function(event) {
 		amount = parseInt(event.target.value);
             if(flag_1 && flag_2){
 		getPrice(amount, type);
-            } else if(!flag_1){
+            } 
+	    else if(!flag_1){
                 getPriceOptions(amount, type, radioListener);
                 flag_1 = true;
-            } else if(!flag_2 && !flag_3){
+            } 
+	    else if(!flag_2 && !flag_3){
                 result.innerHTML = (type - 1000) * amount;
                 flag_2 = true;
 		flag_3 = true;
-            } else if(flag_3){
+            } 
+	    else if(flag_3){
 		getPrice(amount, type);
-		}
+	    }
 
             let s = document.getElementsByName("goods");
 	        s[0].addEventListener("change", function(event) {
@@ -65,12 +70,14 @@ window.addEventListener('DOMContentLoaded', function(event) {
 			    checkbox.style.display = "none";
 			    type = typeAll[0];
 			    getPrice(amount, type);
-		    } else if (select.value == "anas") {
+		    } 
+		    else if (select.value == "anas") {
 			    radios.style.display = "none";
 			    checkbox.style.display = "block";
 			    type = typeAll[1];
 			    getPrice(amount, type);
-		    } else {
+		    } 
+		    else {
 			    radios.style.display = "block";
 			    checkbox.style.display = "none";
 			    type = typeAll[2];
@@ -92,15 +99,16 @@ window.addEventListener('DOMContentLoaded', function(event) {
 	        c[0].addEventListener("change", function(event) {
 		        if (event.target.checked && amount != 0) {
 			        result.innerHTML = (type - 1000) * amount;
-                    flag_2 = false;
-					flag_3 = false;
-		        } else {
+                                flag_2 = false;
+				flag_3 = false;
+		        } 
+			else {
 			        getPrice(amount, type);
-					flag_3 = true;
+				flag_3 = true;
 		        }
 	        });
-
-		} else {
+		} 
+		else {
 			amount = 0;
 			result.innerHTML = "введите корректные данные";
 		}
