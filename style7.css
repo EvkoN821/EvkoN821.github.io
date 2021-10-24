@@ -1,0 +1,28 @@
+.slider {
+    width: 50%;
+    margin:auto;
+    width: 85%;
+}
+
+body{
+    background-image: url(background.png);
+}
+
+.slider img{
+    width: 85%;
+    height: 85%;
+    margin: 0 auto;
+    background-color: white;
+}
+
+.ex-num{
+    position: relative;
+    text-align: center;
+    color: white;
+    background-color: rgb(0, 0, 0);
+}
+
+#foot{
+    background-color: black;
+    color: white;
+}
