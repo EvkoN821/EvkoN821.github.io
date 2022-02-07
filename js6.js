@@ -60,18 +60,18 @@ window.addEventListener('DOMContentLoaded', function(event) {
 				getPrice(amount, type);
 			}
 
-            let s = document.getElementsByName("list_of_goods");  
+            let s = document.getElementsByName("goods");  
 	        s[0].addEventListener("change", function(event) {
 		        let select = event.target;  
 		        let radios = document.getElementById("options");
 		        let checkbox = document.getElementById("property"); 
-				if (select.value == "cup") {
+				if (select.value == "zayt") {
 					radios.style.display = "none"; 
 					checkbox.style.display = "none";
 					type = typeAll[0];
 					getPrice(amount, type);
 				} 
-				else if (select.value == "pants") {
+				else if (select.value == "anas") {
 					radios.style.display = "none";
 					checkbox.style.display = "block";
 					type = typeAll[1];
